@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  height: 65px;
+ 
+}
+.container-fluid {
+  margin-left: -8px;
+}
+
+#navbarSupportedContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* Adiciona a classe de cursor-pointer */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .container-fluid {
+    height: -1vh;
+  }
+  .navbar {
+    height: 100px;
+    align-items: baseline;   
+  }
+}
+

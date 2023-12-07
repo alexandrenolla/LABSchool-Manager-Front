@@ -1,0 +1,75 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<br><br><br>
+
+<div class="container my-5 d-flex flex-column min-vh-100">
+    <h2>Cadastro de Exercício</h2>
+    <form (ngSubmit)="salvarExercicio()" [formGroup]="exercicioForm" class="mt-4">
+      <div class="form-group">
+        <label for="aluno">Aluno:</label>
+        <select class="form-control" id="aluno" formControlName="alunoId"
+          [class.is-invalid]="isFieldInvalid('alunoId')" [class.is-valid]="isFieldValid('alunoId')">
+          <option value="" disabled selected>Selecione um aluno</option>
+          <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
+        </select>
+        <div *ngIf="isFieldInvalid('alunoId')" class="invalid-feedback">
+          Selecione um aluno
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pedagogo">Professor:</label>
+        <select class="form-control" id="professor" formControlName="codigoProfessor"
+          [class.is-invalid]="isFieldInvalid('codigoProfessor')" [class.is-valid]="isFieldValid('codigoProfessor')">
+          <option value="" disabled selected>Selecione um professor</option>
+          <option *ngFor="let professor of professores" [value]="professor.id">{{ professor.nome }}</option>
+        </select>
+        <div *ngIf="isFieldInvalid('codigoProfessor')" class="invalid-feedback">
+          Selecione um professor
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dataExercicio">Data:</label>
+        <input type="date" class="form-control" id="dataExercicio" formControlName="dataConclusao"
+          [class.is-invalid]="isFieldInvalid('dataConclusao')" [class.is-valid]="isFieldValid('dataConclusao')">
+        <div *ngIf="isFieldInvalid('dataConclusao')" class="invalid-feedback">
+          A data é obrigatória.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="titulo">Título:</label>
+        <input type="text" class="form-control" id="titulo" formControlName="titulo"
+          placeholder="Título" [class.is-invalid]="isFieldInvalid('titulo')"
+          [class.is-valid]="isFieldValid('titulo')" minlength="8" maxlength="64">
+        <div *ngIf="isFieldInvalid('titulo')" class="invalid-feedback">
+            O título do exercício é obrigatório e deve ter no mínimo 8 caracteres.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descricaoExercicio">Descrição:</label>
+        <input type="text" class="form-control" id="descricaoExercicio" formControlName="descricao"
+          placeholder="Descrição do exercício" [class.is-invalid]="isFieldInvalid('descricao')"
+          [class.is-valid]="isFieldValid('descricao')" minlength="15" maxlength="255">
+        <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback" >
+            A descrição do exercício é obrigatório e deve ter no mínimo 15 caracteres.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="materia">Matéria:</label>
+        <input type="text" class="form-control" id="materia" formControlName="materia"
+          placeholder="Matéria" [class.is-invalid]="isFieldInvalid('materia')"
+          [class.is-valid]="isFieldValid('materia')">
+        <div *ngIf="isFieldInvalid('materia')" class="invalid-feedback">
+            A matéria é obrigatória.
+        </div>
+      </div>
+      <div *ngIf="formError" class="alert alert-danger">
+        {{ formError }}
+      </div>
+      
+      <div class="my-4">
+        <button type="submit" [disabled]="exercicioForm.invalid" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i> Salvar</button>
+        <button [routerLink]="['/exercicios/list']" class="btn btn-secondary mx-2 my-2"><i class="fas fa-arrow-left"></i>
+          Voltar para a lista de exercícios </button>
+      </div>
+    </form>
+</div>

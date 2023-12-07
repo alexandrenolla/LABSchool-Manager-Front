@@ -1,0 +1,51 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<br><br><br>
+<div class="container my-5 flex-column min-vh-100">
+  <h1>Listagem de Atendimentos</h1>
+  <button class="btn btn-info my-2" [routerLink]="['/atendimentos/create']"> <i class="fas fa-plus"></i> Cadastrar novo atendimento</button>
+  <input type="text" class="form-control mb-4" placeholder="Filtro pela descrição do atendimento" [(ngModel)]="filtroDescricao" (input)="filtrarAtendimentos()">
+  
+  <div *ngIf="loadingError" class="alert alert-danger mt-4">
+    <strong>Erro:</strong> Não foi possível carregar os dados dos atendimentos.
+  </div>
+  <div *ngIf="searchError" class="alert alert-warning mt-4">
+    <strong>Aviso:</strong> Não foram encontrados atendimentos com o título informado.
+  </div>
+
+  <div *ngIf="!loadingError" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let atendimento of paginatedAtendimentos; trackBy: trackByFn">
+      <div class="card h-100">
+        <i class="fas fa-comments fa-5x d-flex mb-3 justify-content-center align-items-center my-4"></i>
+        <div class="card-body card-with-background">
+          <h5 class="card-title">{{atendimento.descricao}}</h5>
+          <p class="card-text"><i class="fas fa-calendar"></i> {{ atendimento.dataHora | date:'dd/MM/yyyy' }}</p>
+          <p class="card-text"><i class="fas fa-file-alt"></i> {{atendimento.descricao}}</p>
+          <p class="card-text"> <i class="fas fa-user-graduate"></i> {{atendimento.alunoId}}</p>
+          <p class="card-text"><i class="fas fa-chalkboard-teacher"></i> {{atendimento.pedagogoId}}</p>
+          <p class="card-text"> <i class="fas fa-info-circle"></i> Situação: {{atendimento.statusAtivo ? 'Ativo' : 'Inativo'}}</p>
+          <button class="btn btn-secondary" [routerLink]="['/atendimentos/edit/'+ atendimento.id]"><i class="fas fa-pencil-alt"></i> Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav aria-label="Page navigation" class="d-flex justify-content-center my-3">
+    <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" href="#" (click)="changePage(currentPage-1); $event.preventDefault()">Anterior</a>
+        </li>
+        <li class="page-item" *ngIf="currentPage > 1">
+            <a class="page-link" href="#" (click)="changePage(currentPage-1); $event.preventDefault()">{{ currentPage-1 }}</a>
+        </li>
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">{{ currentPage }}</span>
+        </li>
+        <li class="page-item" *ngIf="currentPage < totalPages.length">
+            <a class="page-link" href="#" (click)="changePage(currentPage+1); $event.preventDefault()">{{ currentPage+1 }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+            <a class="page-link" href="#" (click)="changePage(currentPage+1); $event.preventDefault()">Próximo</a>
+        </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,30 @@
+.custom-img {
+    max-width: 100%;
+    max-height: 200px; 
+  }
+  
+  .color-palette {
+    display: flex;
+    gap: 5px; 
+    margin-bottom: 10px; 
+}
+
+.color-box {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 5px; 
+}
+
+body {
+  background-image: url('https://pedigreetechnologies.com/wp-content/uploads/2016/05/Award-Background-Image.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 1250px) {
+   .container {
+    width: 60%;
+    padding-top: 150px;
+
+  }
+}

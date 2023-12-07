@@ -1,0 +1,20 @@
+.card{
+    margin-top: 200px;
+    height: 1100px;
+}
+.form-control{
+    border-radius: 20px;
+}
+.custom-checkbox {
+    transform: scale(2.5); /* Ajuste o valor conforme necessário para aumentar ou diminuir o tamanho */
+    margin-right: 5px;
+    margin-left: 25px; /* Opcional: Adiciona um espaçamento à direita do checkbox */
+  }
+  
+  /* Estilos para telas com largura menor que 768 pixels */
+  @media (max-width: 850px) {
+    #responsividade {
+        width: 70vw;
+    }
+  }
+  

@@ -1,0 +1,64 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="container my-5 d-flex flex-column min-vh-100">
+  <h1>Editar Avaliação</h1>
+  <form (ngSubmit)="salvarAvaliacao()" novalidate>
+    <div class="form-group">
+      <label for="aluno">Aluno:</label>
+      <select class="form-control" id="aluno" [(ngModel)]="avaliacao.alunoId" name="aluno" required>
+        <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="pedagogo">Professor:</label>
+      <select class="form-control" id="pedagogo" [(ngModel)]="avaliacao.codigoProfessor" name="pedagogo" required>
+        <option *ngFor="let professor of professores" [value]="professor.id">{{ professor.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="titulo">Título:</label>
+      <textarea class="form-control" id="titulo" [(ngModel)]="avaliacao.titulo" name="titulo"  minlength="8" maxlength="64" required></textarea>
+    </div> 
+    <div *ngIf="isFieldInvalid('titulo')" class="invalid-feedback">
+      O título deve ter no mínimo 8 caracteres.
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição:</label>
+      <textarea class="form-control" id="descricao" [(ngModel)]="avaliacao.descricao" name="descricao"  minlength="15" maxlength="255" required></textarea>
+    </div>
+    <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback" >
+      A descrição deve ter no mínimo 15 caracteres.
+    </div>
+    <div class="form-group">
+      <label for="materia">Matéria:</label>
+      <textarea class="form-control" id="materia" [(ngModel)]="avaliacao.materia" name="materia" required></textarea>
+    </div> 
+    <div class="form-group">
+      <label for="pontuacaoMaxima">Pontuação máxima:</label>
+      <input type="number" class="form-control" id="pontuacaoMaxima" [(ngModel)]="avaliacao.pontuacaoMaxima" name="pontuacaoMaxima" required>
+    </div>
+    <div class="form-group">
+      <label for="nota">Nota:</label>
+      <input type="number" class="form-control" id="nota" [(ngModel)]="avaliacao.nota" name="nota" required>
+    </div>
+    <div class="form-group">
+      <label for="dataRealizacao">Data:</label>
+      <input type="date" class="form-control" id="dataRealizacao" [(ngModel)]="avaliacao.dataRealizacao" name="dataRealizacao">
+    </div>    
+    <div class="my-4">
+      <div *ngIf="formInvalid" class="alert alert-danger" role="alert">
+        AlunoId, ProfessorId, Título e Descrição são obrigatórios.
+      </div>
+      <button type="submit" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i>
+        Salvar
+      </button>
+      <button type="button" class="btn btn-danger mx-2 my-2" (click)="deletarAvaliacao()"><i class="fas fa-trash"></i>
+        Deletar
+      </button>
+      <button [routerLink]="['/avaliacoes/list']" class="btn btn-secondary mx-y my-2"><i class="fas fa-arrow-left"></i>
+        Voltar para a lista de avaliações
+      </button>
+    </div>
+  </form>
+</div>

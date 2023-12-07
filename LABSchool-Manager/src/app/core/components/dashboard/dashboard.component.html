@@ -1,0 +1,117 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <!-- Card: Total de Alunos -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-4">
+            <div class="card text-center p-4 card-with-background" style="margin-top: 70px;">
+                <i class="fas fa-user-graduate fa-3x mb-3"></i>
+                <h2 class="card-title h4">Total de Alunos</h2>
+                <p class="card-text">{{ totalAlunos }}</p>
+            </div>
+        </div>
+        
+
+        <!-- Card: Total de Exercícios -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-4">
+            <div class="card text-center p-4 card-with-background" style="margin-top: 70px;">
+                <i class="fas fa-book fa-3x mb-3"></i>
+                <h2 class="card-title h4">Total de Exercícios</h2>
+                <p class="card-text">{{ totalExercicios }}</p>
+            </div>
+        </div>
+
+        <!-- Card: Total de Avaliações -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-4">
+            <div class="card text-center p-4 card-with-background">
+                <i class="fas fa-clipboard-check fa-3x mb-3"></i>
+                <h2 class="card-title h4">Total de Avaliações</h2>
+                <p class="card-text">{{ totalAvaliacoes }}</p>
+            </div>
+        </div>
+
+        <!-- Card: Total de Atendimentos -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-4">
+            <div class="card text-center p-4 card-with-background">
+                <i class="fas fa-headset fa-3x mb-3"></i>
+                <h2 class="card-title h4">Total de Atendimentos</h2>
+                <p class="card-text">{{ totalAtendimentos }}</p>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <div class="card" style="width: 50%;">
+                <div class="card-body">
+                    <h5 class="card-title">Atendimentos por Dia</h5>
+                    <canvas #chartRef></canvas>
+                </div>
+            </div>
+        </div>
+        
+        
+    <!-- Lista de Usuários -->
+    <div *ngIf="isAdmin()" class="col-12 col-sm-8 mx-auto" style="width: 900px;">
+        <input type="text" placeholder="Pesquisar por nome, telefone ou CPF" class="form-control mb-3" (input)="buscaUser($event)" >
+      
+        <div class="card">
+          <div class="card-body" style=" background-color: #f5f5f5; border-radius: 20px;" >
+            <h2 class="card-title h4">Lista de Usuários</h2>
+            <div *ngFor="let usuario of buscaUsuarios" class="card my-2">
+              <div class="card-body">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div>
+                    <i class="fas fa-user fa-lg mr-2"></i>
+                    <span>{{ usuario.nome }}</span>
+                    <i class="fas fa-phone fa-lg mr-2"></i> <!-- Ícone de telefone -->
+                    <span>{{ usuario.telefone }}</span>
+                    <i class="fas fa-file fa-lg mr-2"></i> <!-- Ícone de arquivo -->
+                    <span>{{ usuario.cpf }}</span>
+                    <i class="fas fa-user-graduate fa-lg mr-2"></i> <!-- Ícone de arquivo -->
+                    <span>{{ usuario.tipoUsuario | userType }}</span>
+                  </div>
+                  <!-- <div class="d-flex justify-content-end">
+                                <button class="btn btn-info mx-2 my-2"><i class="fas fa-eye"></i> Ver Mais</button>
+                                <button type="button" class="btn btn-warning mx-2 my-2"><i class="fas fa-edit"></i> Editar</button>
+                            </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+    <!-- Lista de Alunos -->
+    <div class="col-12 col-sm-8 mx-auto" style="width: 900px;">
+        <input type="text" placeholder="Pesquisar por nome, telefone ou CPF" class="form-control mb-3" (input)="buscaAluno($event)">
+
+        <div class="card">
+            <div class="card-body" style=" background-color: #f5f5f5; border-radius: 20px;">
+                <h2 class="card-title h4">Lista de Alunos</h2>
+                <div *ngFor="let aluno of buscaAlunos" class="card my-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fas fa-user-graduate fa-lg mr-2"></i>
+                                <span>{{ aluno.nome }}</span>
+                                <i class="fas fa-phone fa-lg mr-2"></i> <!-- Ícone de telefone -->
+                                <span>{{ aluno.telefone }}</span>
+                                <i class="fas fa-file fa-lg mr-2"></i> <!-- Ícone de arquivo -->
+                                <span>{{ aluno.cpf }}</span>
+                            </div>
+                            <!-- <div class="d-flex justify-content-end">
+                                <button class="btn btn-info mx-2 my-2" [routerLink]="['/alunos/'+ aluno.id]"><i class="fas fa-eye"></i> Ver Mais</button>
+                                <button type="button" class="btn btn-warning mx-2 my-2"><i class="fas fa-edit"></i> Editar</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+

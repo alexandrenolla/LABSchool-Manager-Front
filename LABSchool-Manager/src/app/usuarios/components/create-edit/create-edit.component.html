@@ -1,0 +1,214 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<br><br><br>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div  id="responsividade" class="col-lg-8">
+      <h1 class="text-center mb-4">Cadastro de Usuários</h1>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+        <!-- Nome -->
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" class="form-control" formControlName="nome"
+          [class.is-invalid]="isFieldInvalid('nome')"
+          [class.is-valid]="isFieldValid('nome')" 
+          placeholder="Nome Completo">
+          <span *ngIf="validateErrorMessage('nome')" class="text-danger">Por favor insira o nome do aluno com no mínimo
+            8 caracteres!</span>
+        </div>
+
+        <!-- Gênero -->
+        <div class="form-group">
+          <label for="genero">Gênero:</label>
+          <select id="genero" class="form-control" formControlName="genero" [class.is-invalid]="isFieldInvalid('genero')"
+          [class.is-valid]="isFieldValid('genero')">
+          <option value="" disabled selected>Selecione um gênero</option>
+            <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+          </select>
+          <span *ngIf="validateErrorMessage('genero')" class="text-danger">Por favor selecione um gênero!</span>
+        </div>
+
+        <!-- CPF -->
+        <div class="form-group">
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" class="form-control" formControlName="cpf" mask="000.000.000-00"
+           [class.is-invalid]="isFieldInvalid('cpf')"
+          [class.is-valid]="isFieldValid('cpf')" placeholder="Digite um CPF no formato 000.000.000.00">
+          <span *ngIf="validateErrorMessage('cpf')" class="text-danger">Por favor digite um CPF!</span>
+
+        </div>
+
+        <!-- Telefone -->
+        <div class="form-group">
+          <label for="telefone">Telefone:</label>
+          <input type="text" id="telefone" class="form-control" 
+          formControlName="telefone"
+          minlength="15"
+          maxlength="15"  
+          [class.is-invalid]="isFieldInvalid('telefone')"
+          [class.is-valid]="isFieldValid('telefone')" 
+          placeholder="Digite um telefone no formato (00) 00000-0000">
+          <span *ngIf="validateErrorMessage('telefone')" class="text-danger">Por favor digite um telefone no padrão (00) 00000-0000
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="form-control" formControlName="email" 
+          [class.is-invalid]="isFieldInvalid('email')"
+          [class.is-valid]="isFieldValid('email')" placeholder="Digite um email válido!" > 
+          <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
+            Email inválido.
+          </div>
+        </div>
+
+        <!-- Senha -->
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" class="form-control" formControlName="senha" maxlength="6" minlength="6"
+           [class.is-invalid]="isFieldInvalid('senha')"
+          [class.is-valid]="isFieldValid('senha')" 
+           placeholder="Digite uma senha de 6 dígitos!" >
+          <span *ngIf="validateErrorMessage('senha')" class="text-danger">Por favor digite uma senha de 6
+            dígitos!</span>
+        </div>
+
+        <!-- Tipo de Usuário -->
+        <div class="form-group">
+          <label for="tipoUsuario">Tipo de Usuário:</label>
+          <select id="tipoUsuario" class="form-control" formControlName="tipoUsuario" 
+          [class.is-invalid]="isFieldInvalid('tipoUsuario')"
+          [class.is-valid]="isFieldValid('tipoUsuario')">
+          <option value="" disabled selected>Selecione um tipo de usuário</option>
+            <option *ngFor="let userType of userTypes" [value]="userType" >{{userType}}</option> 
+          </select>
+          <span *ngIf="validateErrorMessage('tipoUsuario')" class="text-danger">Por favor selecione um tipo de usuário!</span>
+        </div>
+
+        <!-- Endereço -->
+        <div formGroupName="endereco">
+
+          <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" class="form-control" formControlName="cep" 
+            placeholder="Digite um CEP no formato 00000-000"  
+             [class.is-invalid]="isFieldInvalid('endereco.cep')"
+            [class.is-valid]="isFieldValid('endereco.cep')"
+            maxlength="9" minlength="9">
+            <span *ngIf="validateErrorMessage('endereco.cep')" class="text-danger">Por favor digite um CEP válido!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" class="form-control" formControlName="cidade"
+            placeholder="Digite uma cidade" [class.is-invalid]="isFieldInvalid('endereco.cidade')"
+            [class.is-valid]="isFieldValid('endereco.cidade')">
+            <span *ngIf="validateErrorMessage('endereco.cidade')" class="text-danger">Por favor digite uma cidade!</span>
+          </div>
+
+          <!-- Estado -->
+          <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select id="estado" class="form-control" formControlName="estado" 
+            [class.is-invalid]="isFieldInvalid('endereco.estado')"
+            [class.is-valid]="isFieldValid('endereco.estado')">
+              <option value="" disabled selected>Selecione um Estado</option>
+              <option *ngFor="let state of states" [value]="state" >{{state}}</option >
+            </select>
+            <span *ngIf="validateErrorMessage('endereco.estado')" class="text-danger">Por favor selecione um Estado!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="logradouro">Logradouro:</label>
+            <input type="text" id="logradouro" class="form-control" formControlName="logradouro" 
+            placeholder="Digite um logradouro!"  [class.is-invalid]="isFieldInvalid('endereco.logradouro')"
+            [class.is-valid]="isFieldValid('endereco.logradouro')">
+            <span *ngIf="validateErrorMessage('endereco.logradouro')" class="text-danger">Por favor digite um logradouro!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" class="form-control" formControlName="numero" 
+            placeholder="Digite um número!"  [class.is-invalid]="isFieldInvalid('endereco.numero')"
+            [class.is-valid]="isFieldValid('endereco.numero')">
+            <span *ngIf="validateErrorMessage('endereco.numero')" class="text-danger">Por favor digite um número!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="complemento">Complemento:</label>
+            <input type="text" id="complemento" class="form-control" formControlName="complemento" 
+            placeholder="Digite um complemento!">
+          </div>
+
+          <div class="form-group">
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" class="form-control" formControlName="bairro" 
+            placeholder="Digite um bairro!" [class.is-invalid]="isFieldInvalid('endereco.bairro')"
+            [class.is-valid]="isFieldValid('endereco.bairro')">
+            <span *ngIf="validateErrorMessage('endereco.bairro')" class="text-danger">Por favor digite um bairro!</span>
+          </div>
+
+          <div class="form-group">
+            <label for="referencia">Referência:</label>
+            <input type="text" id="referencia" class="form-control" formControlName="referencia" 
+            placeholder="Digite uma referência!">
+          </div>
+
+        </div>
+        <br>
+
+        <!-- Status Ativo -->
+        <div class="form-group">
+          <label>Status Ativo: </label>
+          <input type="checkbox" formControlName="statusAtivo" class="custom-checkbox">
+        </div>
+        <br>
+
+        <!-- Matricula -->
+       
+        <div class="form-group">
+          <label for="matricula">Matrícula:</label>
+          <input type="number" id="matricula" class="form-control" 
+          formControlName="matricula"
+          min="0" 
+          placeholder="Selecione um número de matrícula">
+        </div>
+
+        <!-- Código do Professor -->
+        <div class="form-group">
+          <label for="codigoProfessor">Código do Professor:</label>
+          <input type="number" id="codigoProfessor" class="form-control" 
+          formControlName="codigoProfessor" min="0" max="300" 
+          placeholder="Selecione um código de professor">
+        </div>
+
+        <!-- White Label ID -->
+        <div>
+          
+          <div class="form-group" >
+            <label for="whiteLabelId">White Label ID:</label>
+            <input type="number" id="whiteLabelId" class="form-control" 
+            formControlName="whiteLabelId" min="1" max="50"
+             placeholder="Selecione um White Label" [class.is-invalid]="isFieldInvalid('whiteLabelId')"
+            [class.is-valid]="isFieldValid('whiteLabelId')">
+            
+          </div>
+          <span *ngIf="validateErrorMessage('whiteLabelId')" class="text-danger">Por favor selecione um White Label!</span>
+        
+        </div>
+       
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-info mx-2 my-2" [disabled]="!userForm.valid"><i class="fas fa-save"></i>
+            Salvar</button>
+        </div>
+        <div class="spinner-border text-primary mt-3" role="status" *ngIf="isLoading">
+          <span class="visually-hidden">Carregando...</span>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>

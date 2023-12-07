@@ -1,0 +1,13 @@
+<ul class="side-menu">
+    <br>
+    <li><a (click)="navigateTo('/dashboard')"><span class="fa fa-home"></span>Dashboard</a></li>
+    <li *ngIf="isAdministrador()"><a (click)="navigateTo('/usuarios/criar-editar')"><span class="fa fa-user"></span>Usuário</a></li>
+    <li *ngIf="!isAluno()"><a (click)="navigateTo('atendimentos/list')"><span class="fas fa-headset fa-2x"></span>Atendimentos</a></li>
+    <li *ngIf="!isAluno()"><a (click)="navigateTo('/exercicios/list')"><span class="fa fa-book"></span>Exercícios</a></li>
+    <li *ngIf="!isAluno()"><a (click)="navigateTo('avaliacoes/list')"><span class="fa fa-star"></span>Avaliações</a></li>
+    <li *ngIf="!isAluno()"><a (click)="navigateTo('/alunos')"><span class="fas fa-user-graduate"></span>Alunos</a></li>
+    <!-- <li *ngIf="!isAluno()"><a (click)="navigateTo('/logs')"><span class="fa fa-history"></span>Logs</a></li> -->
+    <li *ngIf="!isAluno()"><a (click)="navigateTo('/white-label')"><span class="fa fa-tag"></span>WhiteLabel</a></li>
+    <li><a (click)="logout()"><span class="fa fa-power-off"></span>Sair</a></li>
+</ul>
+

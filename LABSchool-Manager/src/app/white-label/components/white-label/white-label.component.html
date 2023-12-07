@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<br><br><br>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h2>White Labels</h2>
+            <div class="column">
+                <div class="col-md-4 mb-4" *ngFor="let whiteLabel of whiteLabels" (click)="selectWhiteLabel(whiteLabel)">
+                    <div class="card" style="width: 350px; height: 450px; overflow: hidden;">
+                        <img [src]="whiteLabel.urlLogo" alt="Logo da empresa" class="card-img-top" style="width: 50%; display: block; margin: auto;">
+                        <div class="card-body" style="overflow-x: auto;">
+                            <h5 class="card-title">{{ whiteLabel.nomeEmpresa }}</h5>
+                            <p class="card-text">{{ whiteLabel.slogan }}</p>
+                            <div class="color-palette">
+                              <div *ngFor="let color of getColorsArray(whiteLabel.cores)"
+                                   class="color-box"
+                                   [style.background-color]="color">
+                              </div>
+                          </div>
+                            <p class="card-text">{{ whiteLabel.complemento }}</p>
+                            <a href="#" class="btn btn-primary">Editar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
