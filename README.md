@@ -1,6 +1,6 @@
 # M3P-FrontEnd-Squad1
 
-Frontend da LABSchool-Manager, uma aplicação Angular integrada com a API RESTful em C# .NET usando SQL Server como banco de dados.
+Front-end desenvolvido com Angular, Bootstrap e CSS personalizado, para o sistema de gestão educacional, no qual professores e pedagogos são os usuários finais. Layout com dashboard de cards dinâmicos e gráfico com Chart.js. Principais funcionalidades: Cadastro, edição, exclusão e consulta de alunos, professores, pedagogos, exercícios, avaliações e atendimentos pedagógicos. Restrições de funcionalidades para cada classe de usuário logado, autenticação de usuários por Token JWT, consumo da API ViaCEP para cadastro de endereços e validação dos campos de todos os formulários. 100% Responsivo.
 
 ## Tecnologias Utilizadas
 
