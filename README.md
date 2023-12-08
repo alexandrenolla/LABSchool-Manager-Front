@@ -1,6 +1,6 @@
 # M3P-FrontEnd-Squad1
 
-Front-end desenvolvido com Angular, Bootstrap e CSS personalizado, para o sistema de gestão educacional, no qual professores e pedagogos são os usuários finais. Layout com dashboard de cards dinâmicos e gráfico com Chart.js. Principais funcionalidades: Cadastro, edição, exclusão e consulta de alunos, professores, pedagogos, exercícios, avaliações e atendimentos pedagógicos. Restrições de funcionalidades para cada classe de usuário logado, autenticação de usuários por Token JWT, consumo da API ViaCEP para cadastro de endereços e validação dos campos de todos os formulários. 100% Responsivo.
+Front-end developed with Angular, Bootstrap, and custom CSS for the educational management system, where teachers and pedagogues are the end users. Layout includes dynamic card dashboard and a chart using Chart.js. Key functionalities: Registration, editing, deletion, and querying of students, teachers, pedagogues, exercises, assessments, and pedagogical consultations. Functionality restrictions based on the logged-in user class, user authentication via JWT Token, consumption of the ViaCEP API for address registration, and validation of all form fields. 100% Responsive.
 
 ## Tecnologias Utilizadas
 
