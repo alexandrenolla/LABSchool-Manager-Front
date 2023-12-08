@@ -22,7 +22,7 @@ Front-end developed with Angular, Bootstrap, and custom CSS for the educational 
 
 ## Instalação e Execução
 
-1. Clone o repositório: `git clone https://github.com/FullStack-Estreito/M3P-FrontEnd-Squad1.git`
+1. Clone o repositório.
 2. Navegue até o diretório do projeto: `cd LABSchool-Manager`
 3. Instale as dependências: `npm install`
 4. Inicie o servidor de desenvolvimento e acesse: `ng serve --o`
