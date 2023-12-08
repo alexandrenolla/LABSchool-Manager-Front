@@ -25,9 +25,9 @@ Front-end developed with Angular, Bootstrap, and custom CSS for the educational 
 ## Installation and Execution
 
 1. Clone the repository.
-2. Navigate to the project directory: cd LABSchool-Manager
-3. Install dependencies: npm install
-4. Start the development server and open the application: ng serve --o
+2. Navigate to the project directory: `cd LABSchool-Manager`
+3. Install dependencies: `npm install`
+4. Start the development server and open the application: `ng serve --o`
 
 ## Usage
 
