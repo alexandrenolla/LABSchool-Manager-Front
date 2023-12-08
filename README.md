@@ -1,38 +1,40 @@
-# M3P-FrontEnd-Squad1
+# 💻 Project
 
 Front-end developed with Angular, Bootstrap, and custom CSS for the educational management system, where teachers and pedagogues are the end users. Layout includes dynamic card dashboard and a chart using Chart.js. Key functionalities: Registration, editing, deletion, and querying of students, teachers, pedagogues, exercises, assessments, and pedagogical consultations. Functionality restrictions based on the logged-in user class, user authentication via JWT Token, consumption of the ViaCEP API for address registration, and validation of all form fields. 100% Responsive.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Angular**: Framework de desenvolvimento para construção de interfaces de usuário.
-- **Serviços**: Utilizados para encapsular lógica de negócios e interação com a API.
-- **Componentização**: Divisão de interfaces em componentes reutilizáveis.
-- **Data Binding**: Ligação bidirecional de dados entre o modelo e a interface.
-- **Diretivas**: Adicionam comportamentos às tags HTML.
-- **Layouts**: Organização e posicionamento dos componentes na interface.
-- **Rotas**: Navegação entre diferentes componentes sem recarregar a página inteira.
-- **Guarda de Rotas**: Proteção de rotas com base em condições específicas.
-- **Requisições HTTP**: Interação com a API RESTful para buscar ou enviar dados.
-- **Formulários Template-Driven e Reactive Forms**: Manipulação e validação de formulários.
+- **Angular**: Development framework for building user interfaces.
+- **Services**: Used to encapsulate business logic and interact with the API.
+- **Componentization**: Division of interfaces into reusable components.
+- **Data Binding**: Bidirectional data binding between the model and the interface.
+- **Directives**: Add behaviors to HTML tags.
+- **Layouts**: Organization and positioning of components in the interface.
+- **Routes**: Navigation between different components without reloading the entire page.
+- **Route Guards**: Protection of routes based on specific conditions.
+- **HTTP Requests**: Interaction with the RESTful API to fetch or send data.
+- **Template-Driven Forms and Reactive Forms**: Handling and validation of forms.
+- **Chart.js**: Library for creating interactive and visually appealing charts.
+- **JWT Authentication**: Token-based authentication for securing API communication.
 
-## Pré-requisitos
+## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/) instalado
-- [Angular CLI](https://angular.io/cli) instalado (`npm install -g @angular/cli`)
+- [Node.js](https://nodejs.org/en/download/) installed.
+- [Angular CLI](https://angular.io/cli) installed. (`npm install -g @angular/cli`)
 
-## Instalação e Execução
+## Installation and Execution
 
-1. Clone o repositório.
-2. Navegue até o diretório do projeto: `cd LABSchool-Manager`
-3. Instale as dependências: `npm install`
-4. Inicie o servidor de desenvolvimento e acesse: `ng serve --o`
+1. Clone the repository.
+2. Navigate to the project directory: cd LABSchool-Manager
+3. Install dependencies: npm install
+4. Start the development server and open the application: ng serve --o
 
-## Uso
+## Usage
 
-1. A aplicação está completamente integrada com a API. Certifique-se de que a API está rodando em `http://localhost:5203` para garantir o funcionamento correto do frontend.
-2. Certifique-se de ter criado um usuário administrador e um whitelabel, pelo swagger da API através dos endpoints POST. O frontend possui autenticação de login e somente dará o primeiro acesso ao sistema para um usuário administrador. 
+1. The application is fully integrated with the API. Make sure the API is running to ensure the correct functioning of the frontend.
+2. Make sure you have created an administrator user and a whitelabel through the API's Swagger using the POST endpoints. The frontend has login authentication using JWT tokens and will only grant initial access to the system for an administrator user. 
 
-Usuário Admministrador (Admin é do tipoUsuario 0):
+Administrator User (Admin is of tipoUsuario 0):
 ```
 {
   "nome": "Admin Lab 365",
@@ -69,12 +71,12 @@ White Label:
     "complemento": "Informações adicionais aqui"
 }
 ```
-## Estrutura do Projeto
+## Project Structure
 
-- **/src/app**: Contém os componentes, serviços e modelos da aplicação.
-- **/src/assets**: Recursos estáticos como imagens e estilos.
+- **/src/app**: Contains the components, services, and models of the application.
+- **/src/assets**: Static resources such as images and styles.
 
 ---
 
-**Nota:** Certifique-se de que a API esteja rodando corretamente para evitar problemas de funcionalidade.
+**Note:** Make sure the API is running correctly to avoid functionality issues.
 
