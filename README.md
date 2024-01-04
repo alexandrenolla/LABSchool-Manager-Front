@@ -34,6 +34,17 @@ Front-end developed with Angular, Bootstrap, and custom CSS for the educational 
 1. The application is fully integrated with the API. Make sure the API is running to ensure the correct functioning of the frontend.
 2. Make sure you have created an administrator user and a whitelabel through the API's Swagger using the POST endpoints. The frontend has login authentication using JWT tokens and will only grant initial access to the system for an administrator user. 
 
+White Label:
+```
+{
+    "nomeEmpresa": "Lab School",
+    "slogan": "Seu futuro em primeiro lugar!",
+    "cores": "#d3d3d3, #17a2b8",
+    "urlLogo": "https://github.com/FeReDragon/Avalicao-modulo2-FullStack-Senai/blob/main/LABSchool_Manager/src/assets/img/labScool-logo.png?raw=true",
+    "complemento": "Informações adicionais aqui"
+}
+```
+
 Administrator User (Admin is of tipoUsuario 0):
 ```
 {
@@ -61,16 +72,6 @@ Administrator User (Admin is of tipoUsuario 0):
 }
 ````
 
-White Label:
-```
-{
-    "nomeEmpresa": "Lab School",
-    "slogan": "Seu futuro em primeiro lugar!",
-    "cores": "#d3d3d3, #17a2b8",
-    "urlLogo": "https://github.com/FeReDragon/Avalicao-modulo2-FullStack-Senai/blob/main/LABSchool_Manager/src/assets/img/labScool-logo.png?raw=true",
-    "complemento": "Informações adicionais aqui"
-}
-```
 ## Project Structure
 
 - **/src/app**: Contains the components, services, and models of the application.
